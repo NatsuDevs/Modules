@@ -1,3 +1,5 @@
+-- Open Source
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -18,7 +20,9 @@ getgenv().Options = {
     Triggerbot = false,
     Smoothness = true,
     AimPart = "Head",
-    FOV = 150
+    FOV = 150,
+    Mousebind = Enum.UserInputType.MouseButton2,
+    Delay = 0
 }
 
 --// Functions \\--
@@ -64,9 +68,26 @@ end
 curc = Circle()
 
 --// Main \\--
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local UserInputService = game:GetService("UserInputService")
+
 UserInputService.InputBegan:Connect(function( input )
     if Options.Mode == "Keyboard" and input.KeyCode == Options.Keybind or Options.Mode == "Mouse" and input.UserInputType == Options.Mousebind then
         Down = true
+        spawn(function()
+            while Down do wait()
+                if Mouse.Target and Players:FindFirstChild(Mouse.Target.Parent.Name) then
+                    local HitPlayer = Players:FindFirstChild(Mouse.Target.Parent.Name)
+                    if HitPlayer.Team ~= LocalPlayer.Team or not getgenv().Options.TeamCheck then
+                        if getgenv().Options.Delay > 0 then wait(getgenv().Options.Delay) end
+                        mouse1press(); wait(); mouse1release()
+                    end
+                end
+                if not getgenv().Options.Triggerbot then break end
+            end
+        end)
 	end
 end)
 
