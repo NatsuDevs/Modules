@@ -1,3 +1,8 @@
+--[[
+	Open Source!
+	Go skid.
+]]
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -57,7 +62,7 @@ function Circle()
     local circ = Drawing.new('Circle')
     circ.Transparency = 1
     circ.Thickness = 1.5
-    circ.Visible = false
+    circ.Visible = Options.ShowFOV
     circ.Color = Color3.fromRGB(255,255,255)
 	circ.Filled = false
 	circ.NumSides = 150
@@ -115,9 +120,15 @@ RunService.RenderStepped:Connect(function( ... )
                 end
             end
         end
-        curc.Visible = true
+        curc.Visible = Options.ShowFOV
         curc.Position = Vector2.new(Mouse.X, Mouse.Y+Inset.Y)
         curc.Radius = Options.FOV
+
+        if Options.RainbowFOV then
+            curc.Color = Color3.fromHSV(tick()%5/5,1,1)
+        else
+            curc.Color = Color3.fromRGB(255,255,255) 
+        end
     else
         -- do nothing except remove the fov
         curc.Visible = false
