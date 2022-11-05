@@ -1,3 +1,5 @@
+-- NatsuRBLX#2006
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -13,7 +15,7 @@ local Inset = GuiService:GetGuiInset()
 
 --// Options \\--
 getgenv().Options = {
-    Enabled = true,
+    Enabled = false,
     TeamCheck = true,
     Triggerbot = false,
     Smoothness = true,
