@@ -1,5 +1,3 @@
--- NatsuRBLX#2006
-
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -76,7 +74,7 @@ local Mouse = LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
 UserInputService.InputBegan:Connect(function( input )
-    if Options.Mode == "Keyboard" and input.KeyCode == Options.Keybind or Options.Mode == "Mouse" and input.UserInputType == Options.Mousebind then
+    if Options.Enabled and Options.Mode == "Keyboard" and input.KeyCode == Options.Keybind or Options.Mode == "Mouse" and input.UserInputType == Options.Mousebind then
         Down = true
         spawn(function()
             while Down do wait()
@@ -94,7 +92,7 @@ UserInputService.InputBegan:Connect(function( input )
 end)
 
 UserInputService.InputEnded:Connect(function( input )
-    if Options.Mode == "Keyboard" and input.KeyCode == Options.Keybind or Options.Mode == "Mouse" and input.UserInputType == Options.Mousebind then
+    if Options.Enabled and Options.Mode == "Keyboard" and input.KeyCode == Options.Keybind or Options.Mode == "Mouse" and input.UserInputType == Options.Mousebind then
         Down = false
     end
 end)
