@@ -1,5 +1,3 @@
--- Open Source
-
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -22,7 +20,8 @@ getgenv().Options = {
     AimPart = "Head",
     FOV = 150,
     Mousebind = Enum.UserInputType.MouseButton2,
-    Delay = 0
+    Delay = 0,
+    ShowFOV = false
 }
 
 --// Functions \\--
@@ -57,7 +56,7 @@ function Circle()
     local circ = Drawing.new('Circle')
     circ.Transparency = 1
     circ.Thickness = 1.5
-    circ.Visible = true
+    circ.Visible = Options.ShowFOV
     circ.Color = Color3.fromRGB(255,255,255)
 	circ.Filled = false
 	circ.NumSides = 150
