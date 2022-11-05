@@ -1,4 +1,4 @@
-local Players = game:GetService("Players")
+local Players = game:GetService("Players") -- noobs
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local GuiService = game:GetService("GuiService")
@@ -57,7 +57,7 @@ function Circle()
     local circ = Drawing.new('Circle')
     circ.Transparency = 1
     circ.Thickness = 1.5
-    circ.Visible = Options.ShowFOV
+    circ.Visible = false
     circ.Color = Color3.fromRGB(255,255,255)
 	circ.Filled = false
 	circ.NumSides = 150
