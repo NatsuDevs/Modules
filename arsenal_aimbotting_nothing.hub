@@ -1,3 +1,5 @@
+-- Free
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -21,7 +23,8 @@ getgenv().Options = {
     FOV = 150,
     Mousebind = Enum.UserInputType.MouseButton2,
     Delay = 0,
-    ShowFOV = false
+    ShowFOV = false,
+    RainbowFOV = false
 }
 
 --// Functions \\--
@@ -65,6 +68,15 @@ function Circle()
 end
 
 curc = Circle()
+spawn(function()
+    while task.wait() do
+        curc.Visible = Options.ShowFOV 
+
+        if Options.RainbowFOV then
+            curc.Color = Color3.fromHSV(tick()%5/5,1,1)
+        end
+    end
+end)
 
 --// Main \\--
 local Players = game:GetService("Players")
