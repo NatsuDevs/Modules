@@ -1,4 +1,4 @@
-local Players = game:GetService("Players") -- noobs
+local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local GuiService = game:GetService("GuiService")
@@ -66,17 +66,6 @@ function Circle()
 end
 
 curc = Circle()
-spawn(function()
-    while task.wait() do
-        if Options.RainbowFOV then
-            curc.Color = Color3.fromHSV(tick()%5/5,1,1)
-        end
-    end
-end)
-
-getgenv().FOV_Visible = function(bool)
-    curc.Visible = bool
-end
 
 --// Main \\--
 local Players = game:GetService("Players")
