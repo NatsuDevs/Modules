@@ -148,7 +148,11 @@ end)
 
 task.spawn(function()
     local CurrentFarmingPets = {}
-    while task.wait() and FarmingLibrary.Enabled do
+    while task.wait() do
+        if not FarmingLibrary.Enabled then
+            return
+        end
+        
         local pethingy = FarmingLibrary:GetPets()
         
         if FarmingLibrary.Mode_Selecting == 'Normal' then
